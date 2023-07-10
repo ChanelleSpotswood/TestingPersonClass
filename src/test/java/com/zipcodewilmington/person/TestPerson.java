@@ -12,6 +12,12 @@ public class TestPerson {
         // Given
         String expectedName = "";
         Integer expectedAge = Integer.MAX_VALUE;
+        Integer expectedWeight = Integer.MAX_VALUE;
+        Double expectedHeight = Double.MAX_VALUE;
+        Boolean expectedGender = true;
+        String expectedState = "";
+        Integer expectedZipcode = Integer.MAX_VALUE;
+
 
         // When
         Person person = new Person();
@@ -19,9 +25,19 @@ public class TestPerson {
         // Then
         String actualName = person.getName();
         Integer actualAge = person.getAge();
+        Integer actualWeight = person.getWeight();
+        Double actualHeight = person.getHeight();
+        Boolean actualGender = person.getGender();
+        String actualState = person.getState();
+        Integer actualZipcode = person.getZipcode();
 
         Assert.assertEquals(expectedName, actualName);
         Assert.assertEquals(expectedAge, actualAge);
+        Assert.assertEquals(expectedWeight, actualWeight);
+        Assert.assertEquals(expectedHeight,actualHeight);
+        Assert.assertEquals(expectedGender,actualGender);
+        Assert.assertEquals(expectedState,actualState);
+        Assert.assertEquals(expectedZipcode,actualZipcode);
     }
 
     @Test
@@ -40,7 +56,7 @@ public class TestPerson {
     @Test
     public void testConstructorWithAge() {
         // Given
-        Integer expected = 5;
+        Integer expected = 100;
 
         // When
         Person person = new Person(expected);
@@ -50,12 +66,27 @@ public class TestPerson {
         Assert.assertEquals(expected, actual);
     }
 
+    @Test
+    public void testConstructorWithWeight() {
+        // Given
+        Integer expected = 120;
+
+        // When
+        Person person = new Person(expected);
+
+        // Then
+        Integer actual = person.getWeight();
+        Assert.assertEquals(expected, actual);
+    }
+
 
     @Test
     public void testConstructorWithNameAndAge() {
         // Given
         Integer expectedAge = 5;
         String expectedName = "Leon";
+
+
 
         // When
         Person person = new Person(expectedName, expectedAge);
@@ -67,7 +98,23 @@ public class TestPerson {
         Assert.assertEquals(expectedAge, actualAge);
         Assert.assertEquals(expectedName, actualName);
     }
+    @Test
+    public void testConstructorWithWeightAndHeight() {
+        // Given
+        Integer expectedWeight = 120;
+        Double expectedHeight = 54.5;
 
+
+        // When
+        Person person = new Person(expectedWeight, expectedHeight);
+
+        // Then
+        Integer actualWeight = person.getWeight();
+        Double actualHeight = person.getHeight();
+
+        Assert.assertEquals(expectedWeight, actualWeight);
+        Assert.assertEquals(expectedHeight, actualHeight);
+    }
     @Test
     public void testSetName() {
         // Given
@@ -93,6 +140,20 @@ public class TestPerson {
 
         // Then
         Integer actual = person.getAge();
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSetWeight() {
+        // Given
+        Person person = new Person();
+        Integer expected = 120;
+
+        // When
+        person.setAge(expected);
+
+        // Then
+        Integer actual = person.getWeight();
         Assert.assertEquals(expected, actual);
     }
 }
